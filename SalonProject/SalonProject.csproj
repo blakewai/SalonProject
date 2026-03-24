@@ -198,13 +198,28 @@
       <DependentUpon>Salon.edmx</DependentUpon>
       <LastGenOutput>Salon.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\iconsadd.png" />
+    <Resource Include="Images\iconsadmin.png" />
+    <Resource Include="Images\iconsclient.png" />
+    <Resource Include="Images\iconsclose.png" />
+    <Resource Include="Images\iconsdelete.png" />
+    <Resource Include="Images\iconsedit.png" />
+    <Resource Include="Images\iconsemploy.png" />
+    <Resource Include="Images\iconsexit.png" />
+    <Resource Include="Images\iconsline.png" />
+    <Resource Include="Images\iconslocation.png" />
+    <Resource Include="Images\iconsmanager.png" />
+    <Resource Include="Images\iconspaper.png" />
+    <Resource Include="Images\iconsprofile.png" />
+    <Resource Include="Images\iconssave.png" />
+    <Resource Include="Images\iconssearch.png" />
+    <Resource Include="Images\iconsservices.png" />
+    <Resource Include="Images\iconsshoppingbag.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
