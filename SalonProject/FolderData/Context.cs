@@ -11,7 +11,7 @@ namespace SalonProject.FolderData
     {
         private static SalonEntities context;
 
-        public static SalonEntities GetContex()
+        public static SalonEntities GetContext()
         {
             if (context == null)
             {

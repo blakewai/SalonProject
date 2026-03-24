@@ -10,21 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SalonProject.Windows
+namespace SalonProject.Pages.PagesAllUser
 {
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Логика взаимодействия для Profile.xaml
+    /// </summary>
+    public partial class Profile : Page
     {
-        public MainWindow()
+        public Profile()
         {
             InitializeComponent();
-            LaunchingApp();
-        }
-
-        private void LaunchingApp()
-        {
-            MainFrame.Navigate(new Uri("Pages/MainPages/Authorization.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }

@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace SalonProject.Pages.MainPages
 {
-    /// <summary>
-    /// Логика взаимодействия для MainPanel.xaml
-    /// </summary>
     public partial class MainPanel : Page
     {
         public static int info_input_bt;
@@ -42,7 +39,7 @@ namespace SalonProject.Pages.MainPages
             info_input_bt = 1;
             InformationTextPanel("Менеджеры");
 
-            FrameUser.Navigate(new Uri("Frame/PagesAdmin/Manager.xaml", UriKind.RelativeOrAbsolute));
+            FrameUser.Navigate(new Uri("Pages/PagesAdmin/Manager.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void BtnEmployee_Click(object sender, RoutedEventArgs e)
@@ -51,7 +48,7 @@ namespace SalonProject.Pages.MainPages
             InformationTextPanel("Сотрудники");
 
 
-            FrameUser.Navigate(new Uri("Frame/PagesAllUser/Profile.xaml", UriKind.RelativeOrAbsolute));
+            FrameUser.Navigate(new Uri("Pages/PagesAllUser/Profile.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void BtnService_Click(object sender, RoutedEventArgs e)
@@ -59,7 +56,7 @@ namespace SalonProject.Pages.MainPages
             InformationTextPanel("Услуги");
 
 
-            FrameUser.Navigate(new Uri("Frame/PagesAllUser/Profile.xaml", UriKind.RelativeOrAbsolute));
+            FrameUser.Navigate(new Uri("Pages/PagesAllUser/Profile.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void BtnInterior_Click(object sender, RoutedEventArgs e)
@@ -67,21 +64,21 @@ namespace SalonProject.Pages.MainPages
             InformationTextPanel("Салон");
 
 
-            FrameUser.Navigate(new Uri("Frame/PagesAllUser/Profile.xaml", UriKind.RelativeOrAbsolute));
+            FrameUser.Navigate(new Uri("Pages/PagesAllUser/Profile.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void BtnClient_Click(object sender, RoutedEventArgs e)
         {
             InformationTextPanel("Клиент");
 
-            FrameUser.Navigate(new Uri("Frame/PagesAllUser/Profile.xaml", UriKind.RelativeOrAbsolute));
+            FrameUser.Navigate(new Uri("Pages/PagesAllUser/Profile.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void BtnProfile_Click(object sender, RoutedEventArgs e)
         {
             InformationTextPanel("Профиль");
 
-            FrameUser.Navigate(new Uri("Frame/PagesAllUser/Profile.xaml", UriKind.RelativeOrAbsolute));
+            FrameUser.Navigate(new Uri("Pages/PagesAllUser/Profile.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void BtnExitAd_Click(object sender, RoutedEventArgs e)
@@ -90,7 +87,7 @@ namespace SalonProject.Pages.MainPages
             var resultExit = MessageBox.Show("Вы уверены что хотите выйти?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (resultExit == MessageBoxResult.Yes)
             {
-                this.NavigationService.Navigate(new Uri("Frame/MainPages/Authorization.xaml", UriKind.RelativeOrAbsolute));
+                this.NavigationService.Navigate(new Uri("Pages/MainPages/Authorization.xaml", UriKind.RelativeOrAbsolute));
                 InformationTextPanel("Отмена выхода!");
             }
         }

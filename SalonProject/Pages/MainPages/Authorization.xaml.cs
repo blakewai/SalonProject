@@ -1,4 +1,5 @@
-﻿using SalonProject.Windows;
+﻿using SalonProject.FolderData;
+using SalonProject.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,7 +67,7 @@ namespace SalonProject.Pages.MainPages
                     if (user != null)
                     {
                         loginInfo = user.Login;
-                        this.NavigationService.Navigate(new Uri("Frame/MainPages/MainPanels.xaml", UriKind.RelativeOrAbsolute));
+                        this.NavigationService.Navigate(new Uri("Pages/MainPages/MainPanel.xaml", UriKind.RelativeOrAbsolute));
                     }
                     else
                     {
