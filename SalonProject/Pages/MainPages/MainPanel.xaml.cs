@@ -18,7 +18,6 @@ namespace SalonProject.Pages.MainPages
 {
     public partial class MainPanel : Page
     {
-        public static int info_input_bt;
         public MainPanel()
         {
             InitializeComponent();
@@ -36,7 +35,6 @@ namespace SalonProject.Pages.MainPages
         }
         private void BtnManager_Click(object sender, RoutedEventArgs e)
         {
-            info_input_bt = 1;
             InformationTextPanel("Менеджеры");
 
             FrameUser.Navigate(new Uri("Pages/PagesAdmin/Manager.xaml", UriKind.RelativeOrAbsolute));
@@ -44,11 +42,9 @@ namespace SalonProject.Pages.MainPages
 
         private void BtnEmployee_Click(object sender, RoutedEventArgs e)
         {
-            info_input_bt = 2;
             InformationTextPanel("Сотрудники");
 
-
-            FrameUser.Navigate(new Uri("Pages/PagesAllUser/Profile.xaml", UriKind.RelativeOrAbsolute));
+            FrameUser.Navigate(new Uri("Pages/PagesAdmin/Manager.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void BtnService_Click(object sender, RoutedEventArgs e)

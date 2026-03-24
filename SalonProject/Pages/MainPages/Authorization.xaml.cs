@@ -17,12 +17,9 @@ using System.Windows.Shapes;
 
 namespace SalonProject.Pages.MainPages
 {
-    /// <summary>
-    /// Логика взаимодействия для Authorization.xaml
-    /// </summary>
     public partial class Authorization : Page
     {
-        public static string loginInfo;
+        public static int IdUser;
 
         public Authorization()
         {
@@ -66,7 +63,7 @@ namespace SalonProject.Pages.MainPages
                         u.Password == PbPassword.Password.ToLower());
                     if (user != null)
                     {
-                        loginInfo = user.Login;
+                        IdUser = user.IdUser;
                         this.NavigationService.Navigate(new Uri("Pages/MainPages/MainPanel.xaml", UriKind.RelativeOrAbsolute));
                     }
                     else

@@ -36,7 +36,7 @@
             <Label Content="Отчество" FontSize="30"/>
             <TextBox Name="LastNameTB" Height="50" FontSize="36" BorderThickness="1" BorderBrush="Black" Background="{x:Null}"/>
             <Label Content="День рождения" FontSize="30"/>
-            <TextBox Name="BirthDayTB" Height="50" FontSize="36" BorderThickness="1" BorderBrush="Black" Background="{x:Null}"/>
+            <DatePicker Name="BirthDayTB" Height="50" FontSize="36" BorderThickness="1" BorderBrush="Black" Background="{x:Null}"/>
             <Label Content="Номер" FontSize="30"/>
             <TextBox Name="NumberTB" Height="50" FontSize="36" BorderThickness="1" BorderBrush="Black" Background="{x:Null}"/>
             <Label Content="Почта" FontSize="30"/>
@@ -50,6 +50,6 @@
             BorderThickness="1"
             Background="#FFEBEB"
             Content="Добавить" 
-            FontSize="40"/>
+            FontSize="40" Click="Add_Click"/>
     </Grid>
 </Page>

@@ -1,5 +1,4 @@
-﻿using SalonProject.Pages.MainPages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,17 +13,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SalonProject.Pages.PagesAdmin
+namespace SalonProject.Pages.PagesManager
 {
-    public partial class Manager : Page
+    /// <summary>
+    /// Логика взаимодействия для Employee.xaml
+    /// </summary>
+    public partial class Employee : Page
     {
-        public Manager()
+        public Employee()
         {
             InitializeComponent();
         }
-
         private void DataGridInfo()
         {
+
         }
 
         private void AddUserBT_Click(object sender, RoutedEventArgs e)
