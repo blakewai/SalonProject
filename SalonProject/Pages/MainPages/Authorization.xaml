@@ -1,0 +1,79 @@
+﻿<Page x:Class="SalonProject.Pages.MainPages.Authorization"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SalonProject.Pages.MainPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="Authorization">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Label Content="АВТОРИЗАЦИЯ" FontSize="72"  Grid.Column="1"
+           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Border Background="MistyRose" Grid.Row="1" Grid.Column="1">
+            <StackPanel Width="700"
+                    Height="700">
+                <Label Content="Логин" FontSize="40"/>
+
+                <TextBox x:Name="TbLogin"
+                     FontSize="40">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border CornerRadius="20"
+                                Height="70" Background="White"
+                                Padding="10"
+                                BorderThickness="1"
+                                BorderBrush="Black"
+                                Cursor="IBeam">
+                                <Grid>
+                                    <ScrollViewer x:Name="PART_ContentHost" 
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
+
+                <Label Content="Пароль" FontSize="40"/>
+
+                <PasswordBox x:Name="PbPassword"
+                         FontSize="40">
+                    <PasswordBox.Template>
+                        <ControlTemplate TargetType="PasswordBox">
+                            <Border CornerRadius="20"
+                                Height="70" Background="White"
+                                Padding="10"
+                                BorderThickness="1"
+                                BorderBrush="Black"
+                                Cursor="IBeam">
+                                <ScrollViewer x:Name="PART_ContentHost" 
+                                              VerticalAlignment="Center" 
+                                              HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </PasswordBox.Template>
+                </PasswordBox>
+
+                <Button Content="Войти" Margin="0,200,0,0" BorderThickness="1" BorderBrush="Black"
+                    x:Name="BtnAut" FontSize="40" Background="LightPink" Click="BtnAut_Click"/>
+
+                <TextBlock VerticalAlignment="Bottom" 
+                       FontSize="30" Name="TextError" Foreground="Red"
+                       TextAlignment="Center" TextWrapping="Wrap"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

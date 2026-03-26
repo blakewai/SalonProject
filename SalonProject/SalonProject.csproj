@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,6 +15,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,8 +38,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,17 +67,64 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="FolderData\Client.cs">
+      <DependentUpon>Salon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FolderData\Context.cs" />
+    <Compile Include="FolderData\Role.cs">
+      <DependentUpon>Salon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FolderData\Salon.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Salon.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FolderData\Salon.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Salon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FolderData\Salon.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Salon.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="FolderData\Salons.cs">
+      <DependentUpon>Salon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FolderData\Schedule.cs">
+      <DependentUpon>Salon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FolderData\Services.cs">
+      <DependentUpon>Salon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FolderData\ServicesName.cs">
+      <DependentUpon>Salon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FolderData\User.cs">
+      <DependentUpon>Salon.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainPages\Authorization.xaml.cs">
+      <DependentUpon>Authorization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainPages\MainPanel.xaml.cs">
+      <DependentUpon>MainPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PagesAdmin\Manager.xaml.cs">
+      <DependentUpon>Manager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PagesAllUser\Profile.xaml.cs">
+      <DependentUpon>Profile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PagesManager\Employee.xaml.cs">
+      <DependentUpon>Employee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +145,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="FolderData\Salon.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Salon.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="FolderData\Salon.edmx.diagram">
+      <DependentUpon>Salon.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -94,5 +161,57 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Page Include="Pages\MainPages\Authorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainPages\MainPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PagesAdmin\Manager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PagesAllUser\Profile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PagesManager\Employee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FolderData\Salon.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Salon.Context.cs</LastGenOutput>
+      <DependentUpon>Salon.edmx</DependentUpon>
+    </Content>
+    <Content Include="FolderData\Salon.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Salon.edmx</DependentUpon>
+      <LastGenOutput>Salon.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
 </Project>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2d25f6d241bb44e0a2c6b36ec9d25938" Name="Diagram1">
+        <EntityTypeShape EntityType="karabandinaModel.Client" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="karabandinaModel.Role" Width="1.5" PointX="2.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="karabandinaModel.Salons" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="karabandinaModel.Schedule" Width="1.5" PointX="7.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="karabandinaModel.Services" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="karabandinaModel.ServicesName" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="karabandinaModel.User" Width="1.5" PointX="5" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="karabandinaModel.FK_Services_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="karabandinaModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="karabandinaModel.FK_Salons_Services" ManuallyRouted="false" />
+        <AssociationConnector Association="karabandinaModel.FK_Schedule_User" ManuallyRouted="false" />
+        <AssociationConnector Association="karabandinaModel.FK_Services_ServicesName" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,77 @@
+﻿<Page x:Class="SalonProject.Pages.PagesAdmin.Manager"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SalonProject.Pages.PagesAdmin"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="Manager">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="333*"/>
+            <RowDefinition Height="61*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Кого смотрим?" Name="InformationTB" Grid.Row="1" FontSize="40"/>
+        <Border Grid.Row="2" HorizontalAlignment="Left"
+            BorderBrush="Black" BorderThickness="1" Margin="1068,0,0,0" Width="452">
+            <StackPanel Orientation="Horizontal">
+                <Button Width="100"
+                    BorderThickness="0"
+                    Background="{x:Null}"
+                    Name="SearchInfoBT" Click="SearchInfoBT_Click">
+                    <Image Source="/Images/iconssearch.png"/>
+                </Button>
+                <TextBox Width="350"
+                     FontSize="40"
+                     BorderThickness="0"
+                     Background="{x:Null}"
+                     Name="SearchInfoTB"/>
+            </StackPanel>
+        </Border>
+
+        <DataGrid Grid.Row="3"
+                  IsReadOnly="True"
+                  AutoGenerateColumns="False"
+                  x:Name="DGManager">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding IdUser}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Lastname}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Middlename}"/>
+                <DataGridTextColumn Header="День рождение" Binding="{Binding Birthday}"/>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}"/>
+                <DataGridTextColumn Header="Почта" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>
+                <DataGridTextColumn Header="Пароль" Binding="{Binding Password}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <ItemContainerTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Name="EditBT" Click="EditBT_Click">
+                                    <Image Source="/Images/iconsedit.png"/>
+                                </Button>
+                                <Button Name="DeleteBT" Click="DeleteBT_Click">
+                                    <Image Source="/Images/iconsdelete.png"/>
+                                </Button>
+                            </StackPanel>
+                        </ItemContainerTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="4" 
+            Width="500" 
+            Height="80" 
+            HorizontalAlignment="Right" 
+            Content="Добавить" 
+            FontSize="40" 
+            Name="AddUserBT"
+            Background="#FFEBEB" Click="AddUserBT_Click"/>
+    </Grid>
+</Page>
