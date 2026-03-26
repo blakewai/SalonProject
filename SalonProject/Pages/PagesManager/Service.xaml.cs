@@ -24,17 +24,7 @@ namespace SalonProject.Pages.PagesManager
     /// </summary>
     public partial class Service : Page
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        public static int IdService;
-=======
-<<<<<<< HEAD
->>>>>>> EditInfo
-=======
->>>>>>> f1da999 (Check)
-=======
         public static Services IdService;
->>>>>>> 562cac7 (Add Salons Page and Clint Page)
         public Service()
         {
             InitializeComponent();
@@ -126,16 +116,6 @@ namespace SalonProject.Pages.PagesManager
             ServiceFrame.Content = null;
             var ServiceAction = new ActionService();
             ServiceFrame.NavigationService?.Navigate(ServiceAction);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-            var ManagerAction = new ActionUser();
-            ServiceFrame.NavigationService?.Navigate(ManagerAction);
->>>>>>> EditInfo
-=======
->>>>>>> f1da999 (Check)
-=======
->>>>>>> 562cac7 (Add Salons Page and Clint Page)
         }
 
         private void EditBT_Click(object sender, RoutedEventArgs e)
@@ -145,39 +125,14 @@ namespace SalonProject.Pages.PagesManager
             ServiceFrame.Content = null;
             var ServiceAction = new ActionService();
             ServiceFrame.NavigationService?.Navigate(ServiceAction);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-            MainPanel.IdUser = DGInfo.SelectedItem as User;
-            MainPanel.ActionInfo = 0;
-            ServiceFrame.Content = null;
-            var ManagerAction = new ActionUser();
-            ServiceFrame.NavigationService?.Navigate(ManagerAction);
->>>>>>> EditInfo
-=======
->>>>>>> f1da999 (Check)
-=======
->>>>>>> 562cac7 (Add Salons Page and Clint Page)
         }
 
         private void DeleteBT_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-<<<<<<< HEAD
-                var user = DGInfo.SelectedItem as User;
-<<<<<<< HEAD
-                var result = MessageBox.Show($"Вы уверены что хотите удалить услегу - {user.Name}?", "Delete",
-=======
-<<<<<<< HEAD
-                var result = MessageBox.Show($"Вы уверены что хотите удалить пользоавтеля - {user.Name}?", "Delete",
->>>>>>> EditInfo
-=======
->>>>>>> f1da999 (Check)
-=======
                 var servicedelete = DGInfo.SelectedItem as Services;
                 var result = MessageBox.Show($"Вы уверены что хотите удалить услегу - {servicedelete.NameServices}?", "Delete",
->>>>>>> 562cac7 (Add Salons Page and Clint Page)
                                                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {

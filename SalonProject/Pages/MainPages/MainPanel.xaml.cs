@@ -70,6 +70,7 @@ namespace SalonProject.Pages.MainPages
 
         private void BtnClient_Click(object sender, RoutedEventArgs e)
         {
+            UserActionInfo = 4;
             InformationTextPanel("Клиент");
 
             FrameUser.Navigate(new Uri("Pages/PagesManager/Clients.xaml", UriKind.RelativeOrAbsolute));
