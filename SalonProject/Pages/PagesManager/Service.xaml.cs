@@ -1,25 +1,35 @@
 ﻿using SalonProject.FolderData;
 using SalonProject.Pages.MainPages;
-using SalonProject.Pages.PagesAdmin;
 using SalonProject.Pages.PagesAllUser;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace SalonProject.Pages.PagesManager
 {
-    public partial class Employee : Page
+    /// <summary>
+    /// Логика взаимодействия для Service.xaml
+    /// </summary>
+    public partial class Service : Page
     {
-        public Employee()
+        public Service()
         {
             InitializeComponent();
-            LoadData(); 
+            LoadData();
         }
+
         private async void LoadData()
         {
             await DataGridInfo();
@@ -31,8 +41,7 @@ namespace SalonProject.Pages.PagesManager
             {
                 var employeeData = await FolderData.SalonEntities
                     .GetContext()
-                    .User
-                    .Where(x => x.IdRole == 3)
+                    .Services
                     .ToListAsync();
 
                 DGInfo.ItemsSource = employeeData;
@@ -44,35 +53,28 @@ namespace SalonProject.Pages.PagesManager
             }
         }
 
-        public async Task<List<User>> UsersSearchLogic(string searchUserWrite)
+        public async Task<List<Services>> UsersSearchLogic(string searchUserWrite)
         {
             try
             {
                 var context = FolderData.SalonEntities.GetContext();
 
-                var query = context.User.Where(u => u.IdRole == 3);
+                
+                string searchLower = searchUserWrite.ToLower();
 
-                if (!string.IsNullOrWhiteSpace(searchUserWrite))
-                {
-                    string searchLower = searchUserWrite.ToLower();
-
-                    query = query.Where(u =>
-                                        u.Name.ToLower().Contains(searchLower) ||
-                                        u.Lastname.ToLower().Contains(searchLower) ||
-                                        u.Middlename.ToLower().Contains(searchLower) ||
-                                        u.Phone.ToLower().Contains(searchLower) ||
-                                        u.Birthday.ToString().ToLower().Contains(searchLower) ||
-                                        u.Login.ToLower().Contains(searchLower) ||
-                                        u.Password.ToLower().Contains(searchLower));
-                }
-
+                var query = context.Services.Where(u =>
+                                    u.NameServices.ToLower().Contains(searchLower)||
+                                    u.Cost.ToString().ToLower().Contains(searchLower)||
+                                    u.IdClient.ToString().ToLower().Contains(searchLower)||
+                                    u.IdServices.ToString().ToLower().Contains(searchLower));
+            
                 return await query.ToListAsync();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка при поиске: {ex.Message}", "Ошибка",
                               MessageBoxButton.OK, MessageBoxImage.Error);
-                return new List<User>();
+                return new List<Services>();
             }
         }
 
@@ -110,18 +112,18 @@ namespace SalonProject.Pages.PagesManager
         private void AddUserBT_Click(object sender, RoutedEventArgs e)
         {
             MainPanel.ActionInfo = 1;
-            EmployeeFrame.Content = null;
+            ServiceFrame.Content = null;
             var ManagerAction = new ActionUser();
-            EmployeeFrame.NavigationService?.Navigate(ManagerAction);
+            ServiceFrame.NavigationService?.Navigate(ManagerAction);
         }
 
         private void EditBT_Click(object sender, RoutedEventArgs e)
         {
             MainPanel.IdUser = DGInfo.SelectedItem as User;
             MainPanel.ActionInfo = 0;
-            EmployeeFrame.Content = null;
+            ServiceFrame.Content = null;
             var ManagerAction = new ActionUser();
-            EmployeeFrame.NavigationService?.Navigate(ManagerAction);
+            ServiceFrame.NavigationService?.Navigate(ManagerAction);
         }
 
         private void DeleteBT_Click(object sender, RoutedEventArgs e)

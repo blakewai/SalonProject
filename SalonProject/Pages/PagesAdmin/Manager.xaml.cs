@@ -38,7 +38,7 @@ namespace SalonProject.Pages.PagesAdmin
                 var employeeData = await FolderData.SalonEntities
                     .GetContext()
                     .User
-                    .Where(x => x.IdRole == 3)
+                    .Where(x => x.IdRole == 2)
                     .ToListAsync();
 
                 DGManager.ItemsSource = employeeData;

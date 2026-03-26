@@ -58,7 +58,7 @@ namespace SalonProject.Pages.MainPages
             InformationTextPanel("Услуги");
 
 
-            FrameUser.Navigate(new Uri("Pages/PagesAllUser/Profile.xaml", UriKind.RelativeOrAbsolute));
+            FrameUser.Navigate(new Uri("Pages/PagesManager/Service.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void BtnInterior_Click(object sender, RoutedEventArgs e)
