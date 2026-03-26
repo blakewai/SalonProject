@@ -1,4 +1,5 @@
-﻿using SalonProject.Windows;
+﻿using SalonProject.FolderData;
+using SalonProject.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,9 @@ namespace SalonProject.Pages.MainPages
 {
     public partial class MainPanel : Page
     {
+        public static int UserActionInfo;
+        public static User IdUser;
+        public static int ActionInfo;
         public MainPanel()
         {
             InitializeComponent();
@@ -35,6 +39,7 @@ namespace SalonProject.Pages.MainPages
         }
         private void BtnManager_Click(object sender, RoutedEventArgs e)
         {
+            UserActionInfo = 2;
             InformationTextPanel("Менеджеры");
 
             FrameUser.Navigate(new Uri("Pages/PagesAdmin/Manager.xaml", UriKind.RelativeOrAbsolute));
@@ -42,9 +47,10 @@ namespace SalonProject.Pages.MainPages
 
         private void BtnEmployee_Click(object sender, RoutedEventArgs e)
         {
+            UserActionInfo = 3;
             InformationTextPanel("Сотрудники");
 
-            FrameUser.Navigate(new Uri("Pages/PagesAdmin/Manager.xaml", UriKind.RelativeOrAbsolute));
+            FrameUser.Navigate(new Uri("Pages/PagesManager/Employee.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void BtnService_Click(object sender, RoutedEventArgs e)
