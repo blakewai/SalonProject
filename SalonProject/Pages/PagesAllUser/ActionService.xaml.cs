@@ -26,6 +26,23 @@ namespace SalonProject.Pages.PagesAllUser
         public ActionService()
         {
             InitializeComponent();
+<<<<<<< HEAD
+=======
+            InfoActionUser();
+        }
+
+        private async void InfoActionUser()
+        {
+            switch (MainPanel.UserActionInfo)
+            {
+                case 2:
+                    Action();
+                    break;
+                case 3:
+                    Action();
+                    break;
+            }
+>>>>>>> EditInfo
         }
 
         private bool Check_Input()
@@ -40,6 +57,7 @@ namespace SalonProject.Pages.PagesAllUser
                 MessageBox.Show("Введите стоимость");
                 return false;
             }
+<<<<<<< HEAD
             return true;
         }
 
@@ -57,7 +75,6 @@ namespace SalonProject.Pages.PagesAllUser
             }
             return true;
         }
-
         private void Action()
         {
             switch (MainPanel.ActionInfo)
@@ -91,8 +108,13 @@ namespace SalonProject.Pages.PagesAllUser
                 switch (MainPanel.ActionInfo)
                 {
                     case 0:
+<<<<<<< HEAD
                         var ServiceInfo = FolderData.SalonEntities.GetContext().Services
                                                                .Where(x => x.IdServices == MainPanel.IdUser.IdUser)
+=======
+                        var ServiceInfo = FolderData.SalonEntities.GetContext().User
+                                                               .Where(x => x.IdUser == MainPanel.IdUser.IdUser)
+>>>>>>> EditInfo
                                                                .FirstOrDefault();
                         if (ServiceInfo != null)
                         {
@@ -108,7 +130,11 @@ namespace SalonProject.Pages.PagesAllUser
                                 servicesAdd.Cost = Convert.ToInt32(CostTB.Text);
                                 servicesAdd.NameServices = ServiceTB.Text;
 
+<<<<<<< HEAD
                                 FolderData.SalonEntities.GetContext().Services.Add(servicesAdd);
+=======
+                                FolderData.SalonEntities.GetContext().User.Add(servicesAdd);
+>>>>>>> EditInfo
                             }
                         }
                         break;

@@ -1,0 +1,72 @@
+﻿<Page x:Class="SalonProject.Pages.PagesAllUser.ActionService"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SalonProject.Pages.PagesAllUser"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="ActionService">
+
+    <Grid>
+    <Button Name="CloseBorder" Click="CloseBorder_Click">
+        <Button.Template>
+            <ControlTemplate>
+                <Border Background="#1E424141"/>
+            </ControlTemplate>
+        </Button.Template>
+    </Button>
+    <Border VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Height="700"
+            Width="1300"
+            Background="#FFEBEB">
+        <Grid>
+            <Button VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Height="70" 
+                    Background="{x:Null}"
+                    Name="Closed"
+                    BorderThickness="0" Click="Close_Click">
+                <Image Source="/Images/iconsclose.png"/>
+            </Button>
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock x:Name="InfoAction" 
+                           Text="Действие" 
+                           HorizontalAlignment="Center"
+                           FontSize="50"
+                           FontWeight="ExtraBold"
+                           Margin="0,45"/>
+                    <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <Label Content="Услуги" FontSize="20"/>
+                        <TextBox Width="400" Height="70" Margin="0,0,100,0" FontSize="30" BorderThickness="1" BorderBrush="Black" Name="ServiceTB"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Content="Стоимость" FontSize="20"/>
+                        <TextBox Width="400" Height="70" Background="White" FontSize="30" BorderThickness="1" BorderBrush="Black" Name="CostTB"/>
+                    </StackPanel>
+                </StackPanel>
+                    <StackPanel Visibility="Collapsed" Name="InfoMain" Orientation="Horizontal">
+                    <StackPanel>
+                        <Label Content="Клинет" FontSize="20"/>
+                        <ComboBox Width="400" Height="70" Margin="0,0,100,0" FontSize="30" BorderThickness="1" BorderBrush="Black" Name="ClientTB"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Content="Тип услуги" FontSize="20"/>
+                        <ComboBox Width="400" Height="70" Background="White" FontSize="30" BorderThickness="1" BorderBrush="Black" Name="ServiceType"/>
+                    </StackPanel>
+                </StackPanel>
+                <Button Margin="0,50,0,0"
+                        Width="400"
+                        Height="60"
+                        Background="#FFCECE"
+                        Content="Сохранить"
+                        FontSize="30"
+                        FontWeight="Bold"
+                        Name="SaveBT" Click="SaveBT_Click"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Grid>
+</Page>

@@ -117,11 +117,20 @@
     <Compile Include="Pages\PagesAdmin\Manager.xaml.cs">
       <DependentUpon>Manager.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PagesAllUser\ActionService.xaml.cs">
+      <DependentUpon>ActionService.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PagesAllUser\ActionUser.xaml.cs">
+      <DependentUpon>ActionUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PagesAllUser\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PagesManager\Employee.xaml.cs">
       <DependentUpon>Employee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PagesManager\Service.xaml.cs">
+      <DependentUpon>Service.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -174,11 +183,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PagesAllUser\ActionService.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PagesAllUser\ActionUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PagesAllUser\Profile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PagesManager\Employee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PagesManager\Service.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -198,13 +219,28 @@
       <DependentUpon>Salon.edmx</DependentUpon>
       <LastGenOutput>Salon.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\iconsadd.png" />
+    <Resource Include="Images\iconsadmin.png" />
+    <Resource Include="Images\iconsclient.png" />
+    <Resource Include="Images\iconsclose.png" />
+    <Resource Include="Images\iconsdelete.png" />
+    <Resource Include="Images\iconsedit.png" />
+    <Resource Include="Images\iconsemploy.png" />
+    <Resource Include="Images\iconsexit.png" />
+    <Resource Include="Images\iconsline.png" />
+    <Resource Include="Images\iconslocation.png" />
+    <Resource Include="Images\iconsmanager.png" />
+    <Resource Include="Images\iconspaper.png" />
+    <Resource Include="Images\iconsprofile.png" />
+    <Resource Include="Images\iconssave.png" />
+    <Resource Include="Images\iconssearch.png" />
+    <Resource Include="Images\iconsservices.png" />
+    <Resource Include="Images\iconsshoppingbag.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -24,7 +24,10 @@ namespace SalonProject.Pages.PagesManager
     /// </summary>
     public partial class Service : Page
     {
+<<<<<<< HEAD
         public static int IdService;
+=======
+>>>>>>> EditInfo
         public Service()
         {
             InitializeComponent();
@@ -114,17 +117,30 @@ namespace SalonProject.Pages.PagesManager
         {
             MainPanel.ActionInfo = 1;
             ServiceFrame.Content = null;
+<<<<<<< HEAD
             var ServiceAction = new ActionService();
             ServiceFrame.NavigationService?.Navigate(ServiceAction);
+=======
+            var ManagerAction = new ActionUser();
+            ServiceFrame.NavigationService?.Navigate(ManagerAction);
+>>>>>>> EditInfo
         }
 
         private void EditBT_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             IdService = DGInfo.SelectedItem as User;
             MainPanel.ActionInfo = 0;
             ServiceFrame.Content = null;
             var ServiceAction = new ActionService();
             ServiceFrame.NavigationService?.Navigate(ServiceAction);
+=======
+            MainPanel.IdUser = DGInfo.SelectedItem as User;
+            MainPanel.ActionInfo = 0;
+            ServiceFrame.Content = null;
+            var ManagerAction = new ActionUser();
+            ServiceFrame.NavigationService?.Navigate(ManagerAction);
+>>>>>>> EditInfo
         }
 
         private void DeleteBT_Click(object sender, RoutedEventArgs e)
@@ -132,7 +148,11 @@ namespace SalonProject.Pages.PagesManager
             try
             {
                 var user = DGInfo.SelectedItem as User;
+<<<<<<< HEAD
                 var result = MessageBox.Show($"Вы уверены что хотите удалить услегу - {user.Name}?", "Delete",
+=======
+                var result = MessageBox.Show($"Вы уверены что хотите удалить пользоавтеля - {user.Name}?", "Delete",
+>>>>>>> EditInfo
                                                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {
