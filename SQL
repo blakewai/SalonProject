@@ -1,0 +1,146 @@
+USE [karabandina]
+GO
+/****** Object:  Table [dbo].[Client]    Script Date: 19.03.2026 13:23:09 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Client](
+	[IdClient] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](200) NOT NULL,
+	[Lastname] [nvarchar](200) NOT NULL,
+	[Middlename] [nvarchar](200) NULL,
+	[Phone] [nvarchar](50) NOT NULL,
+	[Date] [date] NOT NULL,
+	[Time] [time](7) NOT NULL,
+	[IdServices] [int] NOT NULL,
+ CONSTRAINT [PK_Client] PRIMARY KEY CLUSTERED 
+(
+	[IdClient] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Role]    Script Date: 19.03.2026 13:23:09 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Role](
+	[IdRole] [int] IDENTITY(1,1) NOT NULL,
+	[NameRole] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_Role] PRIMARY KEY CLUSTERED 
+(
+	[IdRole] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Salons]    Script Date: 19.03.2026 13:23:09 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Salons](
+	[IdSalons] [int] IDENTITY(1,1) NOT NULL,
+	[NameSalons] [nvarchar](200) NOT NULL,
+	[Cost] [decimal](10, 2) NOT NULL,
+	[IdServices] [int] NOT NULL,
+ CONSTRAINT [PK_Salons] PRIMARY KEY CLUSTERED 
+(
+	[IdSalons] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Schedule]    Script Date: 19.03.2026 13:23:09 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Schedule](
+	[IdSchedule] [int] IDENTITY(1,1) NOT NULL,
+	[Date] [date] NOT NULL,
+	[Time] [time](7) NOT NULL,
+	[IdUser] [int] NOT NULL,
+ CONSTRAINT [PK_Schedule] PRIMARY KEY CLUSTERED 
+(
+	[IdSchedule] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Services]    Script Date: 19.03.2026 13:23:09 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Services](
+	[IdServices] [int] IDENTITY(1,1) NOT NULL,
+	[NameServices] [nvarchar](200) NOT NULL,
+	[Cost] [decimal](10, 2) NOT NULL,
+	[IdServicesType] [int] NOT NULL,
+	[IdClient] [int] NOT NULL,
+ CONSTRAINT [PK_Services] PRIMARY KEY CLUSTERED 
+(
+	[IdServices] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ServicesName]    Script Date: 19.03.2026 13:23:09 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ServicesName](
+	[IdServicesType] [int] IDENTITY(1,1) NOT NULL,
+	[ServicesType] [nvarchar](200) NOT NULL,
+ CONSTRAINT [PK_ServicesName] PRIMARY KEY CLUSTERED 
+(
+	[IdServicesType] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[User]    Script Date: 19.03.2026 13:23:09 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[User](
+	[IdUser] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](200) NOT NULL,
+	[Lastname] [nvarchar](200) NOT NULL,
+	[Middlename] [nvarchar](200) NULL,
+	[Birthday] [date] NOT NULL,
+	[Phone] [nvarchar](50) NOT NULL,
+	[Email] [nvarchar](200) NOT NULL,
+	[IdRole] [int] NOT NULL,
+	[Login] [nvarchar](200) NOT NULL,
+	[Password] [nvarchar](200) NOT NULL,
+ CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+(
+	[IdUser] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Salons]  WITH CHECK ADD  CONSTRAINT [FK_Salons_Services] FOREIGN KEY([IdServices])
+REFERENCES [dbo].[Services] ([IdServices])
+GO
+ALTER TABLE [dbo].[Salons] CHECK CONSTRAINT [FK_Salons_Services]
+GO
+ALTER TABLE [dbo].[Schedule]  WITH CHECK ADD  CONSTRAINT [FK_Schedule_User] FOREIGN KEY([IdUser])
+REFERENCES [dbo].[User] ([IdUser])
+GO
+ALTER TABLE [dbo].[Schedule] CHECK CONSTRAINT [FK_Schedule_User]
+GO
+ALTER TABLE [dbo].[Services]  WITH CHECK ADD  CONSTRAINT [FK_Services_Client] FOREIGN KEY([IdClient])
+REFERENCES [dbo].[Client] ([IdClient])
+GO
+ALTER TABLE [dbo].[Services] CHECK CONSTRAINT [FK_Services_Client]
+GO
+ALTER TABLE [dbo].[Services]  WITH CHECK ADD  CONSTRAINT [FK_Services_ServicesName] FOREIGN KEY([IdServicesType])
+REFERENCES [dbo].[ServicesName] ([IdServicesType])
+GO
+ALTER TABLE [dbo].[Services] CHECK CONSTRAINT [FK_Services_ServicesName]
+GO
+ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Role] FOREIGN KEY([IdRole])
+REFERENCES [dbo].[Role] ([IdRole])
+GO
+ALTER TABLE [dbo].[User] CHECK CONSTRAINT [FK_User_Role]
+GO
