@@ -26,7 +26,42 @@ namespace SalonProject.Pages.MainPages
         {
             InitializeComponent();
             InformationTextPanel("Главная страница");
+            Root();
         }
+
+        private void Root()
+        {
+            var RoleInfo = FolderData.SalonEntities.GetContext().Role.Where(r => r.IdRole == Authorization.CurrentUser.IdRole).FirstOrDefault();
+            switch (RoleInfo.IdRole)
+            {
+                case 1:
+                    BtnTime.Visibility = Visibility.Collapsed;
+                    PanelUsers.Text = "Админ";
+                    break;
+                case 2:
+                    BtnManager.Visibility = Visibility.Collapsed;
+                    BtnInterior.Visibility = Visibility.Collapsed;
+                    PanelUsers.Text = "Менеджер";
+                    break;
+                case 3:
+                    BtnManager.Visibility = Visibility.Collapsed;
+                    BtnInterior.Visibility = Visibility.Collapsed;
+                    BtnEmployee.Visibility = Visibility.Collapsed;
+                    BtnService.Visibility = Visibility.Collapsed;
+                    PanelUsers.Text = "Сотрудник";
+                    break;
+                case 4:
+                    BtnManager.Visibility = Visibility.Collapsed;
+                    BtnInterior.Visibility = Visibility.Collapsed;
+                    BtnEmployee.Visibility = Visibility.Collapsed;
+                    BtnService.Visibility = Visibility.Collapsed;
+                    BtnTime.Visibility = Visibility.Collapsed;
+                    BtnClient.Visibility = Visibility.Collapsed;
+                    PanelUsers.Text = "Клиент";
+                    break;
+            }
+        }
+
         private void InformationTextPanel(string Text)
         {
             var mainWindows = Application.Current.Windows
@@ -81,6 +116,11 @@ namespace SalonProject.Pages.MainPages
             InformationTextPanel("Профиль");
 
             FrameUser.Navigate(new Uri("Pages/PagesAllUser/Profile.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void BtnTime_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void BtnExitAd_Click(object sender, RoutedEventArgs e)

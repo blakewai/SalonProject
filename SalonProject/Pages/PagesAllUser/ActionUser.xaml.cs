@@ -27,20 +27,7 @@ namespace SalonProject.Pages.PagesAllUser
         public ActionUser()
         {
             InitializeComponent();
-            InfoActionUser();
-        }
-
-        private async void InfoActionUser()
-        {
-            switch (MainPanel.UserActionInfo)
-            {
-                case 2:
-                    Action();
-                    break;
-                case 3:
-                    Action();
-                    break;
-            }
+            Action();
         }
 
         private bool Check_Input()

@@ -130,7 +130,7 @@ namespace SalonProject.Pages.PagesAllUser
                         if (ServiceInfo != null)
                         {
                             ServiceInfo.NameServices = ServiceTB.Text;
-                            ServiceInfo.Cost = Convert.ToInt32(CostTB.Text);
+                            ServiceInfo.Cost = Convert.ToDecimal(CostTB.Text);
                         }
                         break;
                     case 1:
@@ -142,7 +142,7 @@ namespace SalonProject.Pages.PagesAllUser
                                 var Users = ClientTB.SelectedItem as User;
                                 var Services = ServiceType.SelectedItem as ServicesName;
                                 servicesAdd.NameServices = ServiceTB.Text;
-                                servicesAdd.Cost = Convert.ToInt32(CostTB.Text);
+                                servicesAdd.Cost = Convert.ToDecimal(CostTB.Text);
                                 servicesAdd.IdClient = Users.IdUser;
                                 servicesAdd.IdServicesType = Services.IdServicesType;
                                 FolderData.SalonEntities.GetContext().Services.Add(servicesAdd);

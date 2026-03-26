@@ -123,11 +123,17 @@
     <Compile Include="Pages\PagesAllUser\ActionService.xaml.cs">
       <DependentUpon>ActionService.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PagesAllUser\ActionTimeTable.xaml.cs">
+      <DependentUpon>ActionTimeTable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PagesAllUser\ActionUser.xaml.cs">
       <DependentUpon>ActionUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PagesAllUser\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PagesAllUser\TimeTable.xaml.cs">
+      <DependentUpon>TimeTable.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PagesManager\Clients.xaml.cs">
       <DependentUpon>Clients.xaml</DependentUpon>
@@ -197,11 +203,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PagesAllUser\ActionTimeTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PagesAllUser\ActionUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PagesAllUser\Profile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PagesAllUser\TimeTable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

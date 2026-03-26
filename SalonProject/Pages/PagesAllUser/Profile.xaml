@@ -9,47 +9,50 @@
       Title="Profile">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="39*"/>
-            <RowDefinition Height="124*"/>
-        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="39*"/>
+                <RowDefinition Height="124*"/>
+            </Grid.RowDefinitions>
 
-        <Button Width="200" Height="200" HorizontalAlignment="Left">
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <Border BorderThickness="1" BorderBrush="Black" Cursor="Hand" Width="200" Height="200">
-                        <Image Name="ProfilePhotoIMG" Source="/Images/iconsadmin.png" Width="200" Height="200"></Image>
-                    </Border>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
+            <Button Width="200" Height="200" HorizontalAlignment="Left">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderThickness="1" BorderBrush="Black" Cursor="Hand" Width="200" Height="200">
+                            <Image Name="ProfilePhotoIMG" Source="/Images/iconsadmin.png" Width="200" Height="200"></Image>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
 
-        <StackPanel Grid.Row="1">
-            <Label Content="Фамилия" FontSize="30"/>
-            <TextBox Name="PatronymicTB" Height="50" FontSize="36" BorderThickness="1" BorderBrush="Black" Background="{x:Null}"/>
-            <Label Content="Имя" FontSize="30"/>
-            <TextBox Name="NameTB" Height="50" FontSize="36" BorderThickness="1" BorderBrush="Black" Background="{x:Null}"/>
-            <Label Content="Отчество" FontSize="30"/>
-            <TextBox Name="LastNameTB" Height="50" FontSize="36" BorderThickness="1" BorderBrush="Black" Background="{x:Null}"/>
-            <Label Content="День рождения" FontSize="30"/>
-            <DatePicker Name="BirthDayTB" Height="50" FontSize="36" BorderThickness="1" BorderBrush="Black" Background="{x:Null}"/>
-            <Label Content="Номер" FontSize="30"/>
-            <TextBox Name="NumberTB" Height="50" FontSize="36" BorderThickness="1" BorderBrush="Black" Background="{x:Null}"/>
-            <Label Content="Почта" FontSize="30"/>
-            <TextBox Name="EmailTB" Height="50" FontSize="36" BorderThickness="1" BorderBrush="Black" Background="{x:Null}"/>
-        </StackPanel>
-        <Button Grid.Column="1" 
-            Width="400" 
-            Height="100" 
-            HorizontalAlignment="Right"
-            BorderBrush="Black"
-            BorderThickness="1"
-            Background="#FFEBEB"
-            Content="Добавить" 
-            FontSize="40" Click="Add_Click"/>
+            <StackPanel Grid.Row="1">
+                <Label Content="Фамилия" FontSize="30"/>
+                <TextBox IsEnabled="False" Name="PatronymicTB" Height="50" FontSize="36" BorderThickness="1" BorderBrush="Black" Background="{x:Null}"/>
+                <Label Content="Имя" FontSize="30"/>
+                <TextBox IsEnabled="False" Name="NameTB" Height="50" FontSize="36" BorderThickness="1" BorderBrush="Black" Background="{x:Null}"/>
+                <Label Content="Отчество" FontSize="30"/>
+                <TextBox IsEnabled="False" Name="LastNameTB" Height="50" FontSize="36" BorderThickness="1" BorderBrush="Black" Background="{x:Null}"/>
+                <Label Content="День рождения" FontSize="30"/>
+                <DatePicker IsEnabled="False" Name="BirthDayTB" Height="50" FontSize="36" BorderThickness="1" BorderBrush="Black" Background="{x:Null}"/>
+                <Label Content="Номер" FontSize="30"/>
+                <TextBox IsEnabled="False" Name="NumberTB" Height="50" FontSize="36" BorderThickness="1" BorderBrush="Black" Background="{x:Null}"/>
+                <Label Content="Почта" FontSize="30"/>
+                <TextBox IsEnabled="False" Name="EmailTB" Height="50" FontSize="36" BorderThickness="1" BorderBrush="Black" Background="{x:Null}"/>
+            </StackPanel>
+            <Button Grid.Column="1" 
+                    Width="400" 
+                    Height="100" 
+                    HorizontalAlignment="Right"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    Background="#FFEBEB"
+                    Content="Добавить" 
+                    FontSize="40" Click="Add_Click"/>
+        </Grid>
+        <Frame Name="ProfileEdit"/>
     </Grid>
 </Page>

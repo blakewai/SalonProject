@@ -1,6 +1,5 @@
 ﻿using SalonProject.FolderData;
 using SalonProject.Pages.MainPages;
-using SalonProject.Pages.PagesAllUser;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -17,11 +16,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SalonProject.Pages.PagesAdmin
+namespace SalonProject.Pages.PagesAllUser
 {
-    public partial class Manager : Page
+    /// <summary>
+    /// Логика взаимодействия для TimeTable.xaml
+    /// </summary>
+    public partial class TimeTable : Page
     {
-        public Manager()
+        public static Schedule TimesInfo;
+
+        public TimeTable()
         {
             InitializeComponent();
             LoadData();
@@ -37,8 +41,18 @@ namespace SalonProject.Pages.PagesAdmin
             {
                 var employeeData = await FolderData.SalonEntities
                     .GetContext()
-                    .User
-                    .Where(x => x.IdRole == 2)
+                    .Schedule
+                    .Include(w => w.User)
+                    .Select(w => new
+                    {
+                        w.IdSchedule,
+                        w.Date,
+                        w.Time,
+                        Name = w.User.Name,
+                        LastName = w.User.Lastname,
+                        Patronymic = w.User.Middlename
+                    }
+                    )
                     .ToListAsync();
 
                 DGManager.ItemsSource = employeeData;
@@ -50,27 +64,21 @@ namespace SalonProject.Pages.PagesAdmin
             }
         }
 
-        public async Task<List<User>> UsersSearchLogic(string searchUserWrite)
+        public async Task<List<FolderData.Schedule>> UsersSearchLogic(string searchUserWrite)
         {
             try
             {
                 var context = FolderData.SalonEntities.GetContext();
 
-                var query = context.User.Where(u => u.IdRole == 2);
 
-                if (!string.IsNullOrWhiteSpace(searchUserWrite))
-                {
-                    string searchLower = searchUserWrite.ToLower();
+                string searchLower = searchUserWrite.ToLower();
 
-                    query = query.Where(u =>
-                                        u.Name.ToLower().Contains(searchLower) ||
-                                        u.Lastname.ToLower().Contains(searchLower) ||
-                                        u.Middlename.ToLower().Contains(searchLower) ||
-                                        u.Phone.ToLower().Contains(searchLower) ||
-                                        u.Birthday.ToString().ToLower().Contains(searchLower) ||
-                                        u.Login.ToLower().Contains(searchLower) ||
-                                        u.Password.ToLower().Contains(searchLower));
-                }
+                var query = context.Schedule.Where(u =>
+                                    u.User.Name.ToLower().Contains(searchLower) ||
+                                    u.User.Lastname.ToLower().Contains(searchLower) ||
+                                    u.User.Middlename.ToLower().Contains(searchLower) ||
+                                    u.Date.ToString().ToLower().Contains(searchLower) ||
+                                    u.Time.ToString().ToLower().Contains(searchLower));
 
                 return await query.ToListAsync();
             }
@@ -78,7 +86,7 @@ namespace SalonProject.Pages.PagesAdmin
             {
                 MessageBox.Show($"Ошибка при поиске: {ex.Message}", "Ошибка",
                               MessageBoxButton.OK, MessageBoxImage.Error);
-                return new List<User>();
+                return new List<FolderData.Schedule>();
             }
         }
 
@@ -96,7 +104,7 @@ namespace SalonProject.Pages.PagesAdmin
 
                 if (searchResults.Count == 0 && !string.IsNullOrWhiteSpace(SearchInfoTB.Text))
                 {
-                    MessageBox.Show("Сотрудники не найдены", "Результат поиска",
+                    MessageBox.Show("не найдены", "Результат поиска",
                                   MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
@@ -116,32 +124,32 @@ namespace SalonProject.Pages.PagesAdmin
         private void AddUserBT_Click(object sender, RoutedEventArgs e)
         {
             MainPanel.ActionInfo = 1;
-            EditManager.Content = null;
+            EditTime.Content = null;
             var ManagerAction = new ActionUser();
-            EditManager.NavigationService?.Navigate(ManagerAction);
+            EditTime.NavigationService?.Navigate(ManagerAction);
         }
 
         private void EditBT_Click(object sender, RoutedEventArgs e)
         {
-            MainPanel.IdUser = DGManager.SelectedItem as User;
+            TimesInfo = DGManager.SelectedItem as Schedule;
             MainPanel.ActionInfo = 0;
-            EditManager.Content = null;
+            EditTime.Content = null;
             var ManagerAction = new ActionUser();
-            EditManager.NavigationService?.Navigate(ManagerAction);
+            EditTime.NavigationService?.Navigate(ManagerAction);
         }
 
         private void DeleteBT_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                var user = DGManager.SelectedItem as User;
-                var result = MessageBox.Show($"Вы уверены что хотите удалить пользоавтеля - {user.Name}?", "Delete",
+                var Time = DGManager.SelectedItem as Schedule;
+                var result = MessageBox.Show($"Вы уверены что хотите удалить Время для пользователя - {Time.User.Name}?", "Delete",
                                                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {
-                    FolderData.SalonEntities.GetContext().User.Remove(user);
+                    FolderData.SalonEntities.GetContext().Schedule.Remove(Time);
                     FolderData.SalonEntities.GetContext().SaveChanges();
-                    
+
                     LoadData();
                 }
             }

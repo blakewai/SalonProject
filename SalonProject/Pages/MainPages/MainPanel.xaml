@@ -42,7 +42,7 @@
                         <TextBlock Text="Панель Кого-то!" Name="PanelUsers"
                            FontSize="30" HorizontalAlignment="Center" 
                            VerticalAlignment="Center" />
-                        <Button x:Name="BtnManager" Margin="0,30" Click="BtnManager_Click">
+                        <Button x:Name="BtnManager" Margin="0,30,0,0" Click="BtnManager_Click">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border Cursor="Hand">
@@ -58,7 +58,7 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button x:Name="BtnEmployee" Click="BtnEmployee_Click">
+                        <Button x:Name="BtnEmployee" Margin="0,30,0,0" Click="BtnEmployee_Click">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border Cursor="Hand">
@@ -74,7 +74,7 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button x:Name="BtnService" Margin="0,30" Click="BtnService_Click">
+                        <Button x:Name="BtnService" Margin="0,30,0,0" Click="BtnService_Click">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border Cursor="Hand">
@@ -90,7 +90,7 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button x:Name="BtnInterior" Click="BtnInterior_Click">
+                        <Button x:Name="BtnInterior" Margin="0,30,0,0" Click="BtnInterior_Click">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border Cursor="Hand">
@@ -106,7 +106,7 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button x:Name="BtnClient" Margin="0,30" Click="BtnClient_Click">
+                        <Button x:Name="BtnClient" Margin="0,30,0,0" Click="BtnClient_Click">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border Cursor="Hand">
@@ -122,7 +122,7 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button x:Name="BtnProfile" Click="BtnProfile_Click">
+                        <Button x:Name="BtnProfile" Margin="0,30,0,0" Click="BtnProfile_Click">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border Cursor="Hand">
@@ -138,7 +138,23 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button x:Name="BtnExitAd" Margin="0,30" Click="BtnExitAd_Click">
+                        <Button x:Name="BtnTime" Margin="0,30,0,0" Click="BtnTime_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Cursor="Hand">
+                                        <Grid Background="LightPink">
+                                            <TextBlock Text="Расписание" FontSize="30"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"/>
+                                            <Image Source="/Images/iconspaper.png"
+                                                   HorizontalAlignment="Left" 
+                                                   Width="60" Height="60"/>
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button x:Name="BtnExitAd" Margin="0,30,0,0" Click="BtnExitAd_Click">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border Cursor="Hand">

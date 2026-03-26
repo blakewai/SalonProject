@@ -19,7 +19,7 @@ namespace SalonProject.Pages.MainPages
 {
     public partial class Authorization : Page
     {
-        public static int IdUser;
+        public static User CurrentUser;
 
         public Authorization()
         {
@@ -63,7 +63,7 @@ namespace SalonProject.Pages.MainPages
                         u.Password == PbPassword.Password.ToLower());
                     if (user != null)
                     {
-                        IdUser = user.IdUser;
+                        CurrentUser = user;
                         this.NavigationService.Navigate(new Uri("Pages/MainPages/MainPanel.xaml", UriKind.RelativeOrAbsolute));
                     }
                     else
