@@ -27,7 +27,10 @@ namespace SalonProject.Pages.PagesManager
 <<<<<<< HEAD
         public static int IdService;
 =======
+<<<<<<< HEAD
 >>>>>>> EditInfo
+=======
+>>>>>>> f1da999 (Check)
         public Service()
         {
             InitializeComponent();
@@ -96,7 +99,9 @@ namespace SalonProject.Pages.PagesManager
 
                 if (searchResults.Count == 0 && !string.IsNullOrWhiteSpace(SearchInfoTB.Text))
                 {
+<<<<<<< HEAD
                     MessageBox.Show("Услуга не найдена", "Результат поиска",
+=======
                                   MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
@@ -121,9 +126,12 @@ namespace SalonProject.Pages.PagesManager
             var ServiceAction = new ActionService();
             ServiceFrame.NavigationService?.Navigate(ServiceAction);
 =======
+<<<<<<< HEAD
             var ManagerAction = new ActionUser();
             ServiceFrame.NavigationService?.Navigate(ManagerAction);
 >>>>>>> EditInfo
+=======
+>>>>>>> f1da999 (Check)
         }
 
         private void EditBT_Click(object sender, RoutedEventArgs e)
@@ -135,12 +143,15 @@ namespace SalonProject.Pages.PagesManager
             var ServiceAction = new ActionService();
             ServiceFrame.NavigationService?.Navigate(ServiceAction);
 =======
+<<<<<<< HEAD
             MainPanel.IdUser = DGInfo.SelectedItem as User;
             MainPanel.ActionInfo = 0;
             ServiceFrame.Content = null;
             var ManagerAction = new ActionUser();
             ServiceFrame.NavigationService?.Navigate(ManagerAction);
 >>>>>>> EditInfo
+=======
+>>>>>>> f1da999 (Check)
         }
 
         private void DeleteBT_Click(object sender, RoutedEventArgs e)
@@ -151,8 +162,11 @@ namespace SalonProject.Pages.PagesManager
 <<<<<<< HEAD
                 var result = MessageBox.Show($"Вы уверены что хотите удалить услегу - {user.Name}?", "Delete",
 =======
+<<<<<<< HEAD
                 var result = MessageBox.Show($"Вы уверены что хотите удалить пользоавтеля - {user.Name}?", "Delete",
 >>>>>>> EditInfo
+=======
+>>>>>>> f1da999 (Check)
                                                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {
