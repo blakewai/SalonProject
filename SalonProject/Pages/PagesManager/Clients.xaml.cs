@@ -20,27 +20,15 @@ using System.Windows.Shapes;
 namespace SalonProject.Pages.PagesManager
 {
     /// <summary>
-    /// Логика взаимодействия для Service.xaml
+    /// Логика взаимодействия для Clients.xaml
     /// </summary>
-    public partial class Service : Page
+    public partial class Clients : Page
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        public static int IdService;
-=======
-<<<<<<< HEAD
->>>>>>> EditInfo
-=======
->>>>>>> f1da999 (Check)
-=======
-        public static Services IdService;
->>>>>>> 562cac7 (Add Salons Page and Clint Page)
-        public Service()
+        public Clients()
         {
             InitializeComponent();
             LoadData();
         }
-
         private async void LoadData()
         {
             await DataGridInfo();
@@ -52,7 +40,8 @@ namespace SalonProject.Pages.PagesManager
             {
                 var employeeData = await FolderData.SalonEntities
                     .GetContext()
-                    .Services
+                    .User
+                    .Where(x => x.IdRole == 4)
                     .ToListAsync();
 
                 DGInfo.ItemsSource = employeeData;
@@ -64,28 +53,35 @@ namespace SalonProject.Pages.PagesManager
             }
         }
 
-        public async Task<List<Services>> UsersSearchLogic(string searchUserWrite)
+        public async Task<List<User>> UsersSearchLogic(string searchUserWrite)
         {
             try
             {
                 var context = FolderData.SalonEntities.GetContext();
 
-                
-                string searchLower = searchUserWrite.ToLower();
+                var query = context.User.Where(u => u.IdRole == 4);
 
-                var query = context.Services.Where(u =>
-                                    u.NameServices.ToLower().Contains(searchLower)||
-                                    u.Cost.ToString().ToLower().Contains(searchLower)||
-                                    u.IdClient.ToString().ToLower().Contains(searchLower)||
-                                    u.IdServices.ToString().ToLower().Contains(searchLower));
-            
+                if (!string.IsNullOrWhiteSpace(searchUserWrite))
+                {
+                    string searchLower = searchUserWrite.ToLower();
+
+                    query = query.Where(u =>
+                                        u.Name.ToLower().Contains(searchLower) ||
+                                        u.Lastname.ToLower().Contains(searchLower) ||
+                                        u.Middlename.ToLower().Contains(searchLower) ||
+                                        u.Phone.ToLower().Contains(searchLower) ||
+                                        u.Birthday.ToString().ToLower().Contains(searchLower) ||
+                                        u.Login.ToLower().Contains(searchLower) ||
+                                        u.Password.ToLower().Contains(searchLower));
+                }
+
                 return await query.ToListAsync();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка при поиске: {ex.Message}", "Ошибка",
                               MessageBoxButton.OK, MessageBoxImage.Error);
-                return new List<Services>();
+                return new List<User>();
             }
         }
 
@@ -103,7 +99,7 @@ namespace SalonProject.Pages.PagesManager
 
                 if (searchResults.Count == 0 && !string.IsNullOrWhiteSpace(SearchInfoTB.Text))
                 {
-                    MessageBox.Show("Услуга не найдена", "Результат поиска",
+                    MessageBox.Show("Сотрудники не найдены", "Результат поиска",
                                   MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
@@ -123,65 +119,30 @@ namespace SalonProject.Pages.PagesManager
         private void AddUserBT_Click(object sender, RoutedEventArgs e)
         {
             MainPanel.ActionInfo = 1;
-            ServiceFrame.Content = null;
-            var ServiceAction = new ActionService();
-            ServiceFrame.NavigationService?.Navigate(ServiceAction);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+            EmployeeFrame.Content = null;
             var ManagerAction = new ActionUser();
-            ServiceFrame.NavigationService?.Navigate(ManagerAction);
->>>>>>> EditInfo
-=======
->>>>>>> f1da999 (Check)
-=======
->>>>>>> 562cac7 (Add Salons Page and Clint Page)
+            EmployeeFrame.NavigationService?.Navigate(ManagerAction);
         }
 
         private void EditBT_Click(object sender, RoutedEventArgs e)
         {
-            IdService = DGInfo.SelectedItem as Services;
-            MainPanel.ActionInfo = 0;
-            ServiceFrame.Content = null;
-            var ServiceAction = new ActionService();
-            ServiceFrame.NavigationService?.Navigate(ServiceAction);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
             MainPanel.IdUser = DGInfo.SelectedItem as User;
             MainPanel.ActionInfo = 0;
-            ServiceFrame.Content = null;
+            EmployeeFrame.Content = null;
             var ManagerAction = new ActionUser();
-            ServiceFrame.NavigationService?.Navigate(ManagerAction);
->>>>>>> EditInfo
-=======
->>>>>>> f1da999 (Check)
-=======
->>>>>>> 562cac7 (Add Salons Page and Clint Page)
+            EmployeeFrame.NavigationService?.Navigate(ManagerAction);
         }
 
         private void DeleteBT_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-<<<<<<< HEAD
                 var user = DGInfo.SelectedItem as User;
-<<<<<<< HEAD
-                var result = MessageBox.Show($"Вы уверены что хотите удалить услегу - {user.Name}?", "Delete",
-=======
-<<<<<<< HEAD
                 var result = MessageBox.Show($"Вы уверены что хотите удалить пользоавтеля - {user.Name}?", "Delete",
->>>>>>> EditInfo
-=======
->>>>>>> f1da999 (Check)
-=======
-                var servicedelete = DGInfo.SelectedItem as Services;
-                var result = MessageBox.Show($"Вы уверены что хотите удалить услегу - {servicedelete.NameServices}?", "Delete",
->>>>>>> 562cac7 (Add Salons Page and Clint Page)
                                                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {
-                    FolderData.SalonEntities.GetContext().Services.Remove(servicedelete);
+                    FolderData.SalonEntities.GetContext().User.Remove(user);
                     FolderData.SalonEntities.GetContext().SaveChanges();
 
                     LoadData();

@@ -65,14 +65,14 @@ namespace SalonProject.Pages.MainPages
             InformationTextPanel("Салон");
 
 
-            FrameUser.Navigate(new Uri("Pages/PagesAllUser/Profile.xaml", UriKind.RelativeOrAbsolute));
+            FrameUser.Navigate(new Uri("Pages/PagesAdmin/Salons.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void BtnClient_Click(object sender, RoutedEventArgs e)
         {
             InformationTextPanel("Клиент");
 
-            FrameUser.Navigate(new Uri("Pages/PagesAllUser/Profile.xaml", UriKind.RelativeOrAbsolute));
+            FrameUser.Navigate(new Uri("Pages/PagesManager/Clients.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void BtnProfile_Click(object sender, RoutedEventArgs e)

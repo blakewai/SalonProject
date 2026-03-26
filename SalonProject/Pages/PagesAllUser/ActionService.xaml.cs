@@ -1,5 +1,6 @@
 ﻿using SalonProject.FolderData;
 using SalonProject.Pages.MainPages;
+using SalonProject.Pages.PagesManager;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -23,9 +24,14 @@ namespace SalonProject.Pages.PagesAllUser
     /// </summary>
     public partial class ActionService : Page
     {
+        private List<User> _users;
+        private List<ServicesName> _services;
+
+
         public ActionService()
         {
             InitializeComponent();
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
             InfoActionUser();
@@ -47,37 +53,21 @@ namespace SalonProject.Pages.PagesAllUser
 =======
 >>>>>>> 24733d9 (Add Table new)
 >>>>>>> f1da999 (Check)
+=======
+            Action();
+>>>>>>> 562cac7 (Add Salons Page and Clint Page)
         }
 
         private bool Check_Input()
         {
             if (ServiceTB.Text == null || ServiceTB.Text == string.Empty)
             {
-<<<<<<< HEAD
                 MessageBox.Show("Введите Имя услуги");
                 return false;
             }
             if (CostTB.Text == null || CostTB.Text == string.Empty)
             {
                 MessageBox.Show("Введите стоимость");
-=======
-                MessageBox.Show("Введите Имя");
-                return false;
-            }
-            if (LastNameTB.Text == null || LastNameTB.Text == string.Empty)
-            {
-                MessageBox.Show("Введите Фамилию");
-                return false;
-            }
-            if (BirthDayDP.Text == null || BirthDayDP.Text == string.Empty)
-            {
-                MessageBox.Show("Введите День рождение");
-                return false;
-            }
-            if (NumberTB.Text == null || NumberTB.Text == string.Empty)
-            {
-                MessageBox.Show("Введите Номер телефона");
->>>>>>> 24733d9 (Add Table new)
                 return false;
             }
 <<<<<<< HEAD
@@ -86,18 +76,16 @@ namespace SalonProject.Pages.PagesAllUser
 
         private bool Check_Input_Add()
         {
-<<<<<<< HEAD
-            if (ClientTB.Items == null)
+            if (ClientTB.SelectedIndex == -1)
             {
                 MessageBox.Show("Введите клиент");
                 return false;
             }
-            if (ServiceType.Items == null)
+            if (ServiceType.SelectedIndex == -1)
             {
                 MessageBox.Show("Введите тип");
                 return false;
             }
-=======
             return true;
         }
         private void Action()
@@ -105,20 +93,36 @@ namespace SalonProject.Pages.PagesAllUser
             switch (MainPanel.ActionInfo)
             {
                 case 0:
-                    var UserInfo = FolderData.SalonEntities.GetContext().User
-                                                           .Where(x => x.IdUser == MainPanel.IdUser.IdUser)
+                    var ServiceInfo = FolderData.SalonEntities.GetContext().Services
+                                                           .Where(x => x.IdServices == Service.IdService.IdServices)
                                                            .FirstOrDefault();
-                    if (UserInfo != null)
+                    if (ServiceInfo != null)
                     {
                         InfoAction.Text = "Редактировать";
+
+                        ServiceTB.Text = ServiceInfo.NameServices;
+                        CostTB.Text = ServiceInfo.Cost.ToString();
 
                     }
                     break;
                 case 1:
                     InfoAction.Text = "Добавить";
                     InfoMain.Visibility = Visibility.Visible;
+
+                    Write_ComboBox();
                     break;
             }
+        }
+
+        private void Write_ComboBox()
+        {
+            _services = FolderData.SalonEntities.GetContext().ServicesName.ToList();
+            ServiceType.ItemsSource = _services;
+            ServiceType.DisplayMemberPath = "ServicesType";
+            _users = FolderData.SalonEntities.GetContext().User.ToList();
+            ClientTB.ItemsSource = _users;
+            ClientTB.DisplayMemberPath = "Phone";
+
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
@@ -133,8 +137,8 @@ namespace SalonProject.Pages.PagesAllUser
                 switch (MainPanel.ActionInfo)
                 {
                     case 0:
-<<<<<<< HEAD
                         var ServiceInfo = FolderData.SalonEntities.GetContext().Services
+<<<<<<< HEAD
                                                                .Where(x => x.IdServices == MainPanel.IdUser.IdUser)
 =======
 <<<<<<< HEAD
@@ -143,23 +147,30 @@ namespace SalonProject.Pages.PagesAllUser
 >>>>>>> EditInfo
 =======
 >>>>>>> f1da999 (Check)
+=======
+                                                               .Where(x => x.IdServices == Service.IdService.IdServices)
+>>>>>>> 562cac7 (Add Salons Page and Clint Page)
                                                                .FirstOrDefault();
                         if (ServiceInfo != null)
                         {
+                            ServiceInfo.NameServices = ServiceTB.Text;
+                            ServiceInfo.Cost = Convert.ToInt32(CostTB.Text);
                         }
                         break;
                     case 1:
                         if (Check_Input_Add())
                         {
-                            var servicesAdd = FolderData.SalonEntities.GetContext().Services
-                                                                   .FirstOrDefault();
+                            var servicesAdd = new Services();
                             if (servicesAdd != null)
                             {
-                                servicesAdd.Cost = Convert.ToInt32(CostTB.Text);
+                                var Users = ClientTB.SelectedItem as User;
+                                var Services = ServiceType.SelectedItem as ServicesName;
                                 servicesAdd.NameServices = ServiceTB.Text;
-
-<<<<<<< HEAD
+                                servicesAdd.Cost = Convert.ToInt32(CostTB.Text);
+                                servicesAdd.IdClient = Users.IdUser;
+                                servicesAdd.IdServicesType = Services.IdServicesType;
                                 FolderData.SalonEntities.GetContext().Services.Add(servicesAdd);
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
                                 FolderData.SalonEntities.GetContext().User.Add(servicesAdd);
@@ -167,6 +178,9 @@ namespace SalonProject.Pages.PagesAllUser
 =======
                                 
 >>>>>>> f1da999 (Check)
+=======
+                                MessageBox.Show("Успех");
+>>>>>>> 562cac7 (Add Salons Page and Clint Page)
                             }
                         }
                         break;

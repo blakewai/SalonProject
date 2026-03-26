@@ -117,6 +117,9 @@
     <Compile Include="Pages\PagesAdmin\Manager.xaml.cs">
       <DependentUpon>Manager.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PagesAdmin\Salons.xaml.cs">
+      <DependentUpon>Salons.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PagesAllUser\ActionService.xaml.cs">
       <DependentUpon>ActionService.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,9 @@
     </Compile>
     <Compile Include="Pages\PagesAllUser\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PagesManager\Clients.xaml.cs">
+      <DependentUpon>Clients.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PagesManager\Employee.xaml.cs">
       <DependentUpon>Employee.xaml</DependentUpon>
@@ -183,6 +189,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PagesAdmin\Salons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PagesAllUser\ActionService.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -192,6 +202,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PagesAllUser\Profile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PagesManager\Clients.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
