@@ -1,26 +1,7 @@
+GO
 USE [karabandina]
 GO
-/****** Object:  Table [dbo].[Client]    Script Date: 19.03.2026 13:23:09 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Client](
-	[IdClient] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](200) NOT NULL,
-	[Lastname] [nvarchar](200) NOT NULL,
-	[Middlename] [nvarchar](200) NULL,
-	[Phone] [nvarchar](50) NOT NULL,
-	[Date] [date] NOT NULL,
-	[Time] [time](7) NOT NULL,
-	[IdServices] [int] NOT NULL,
- CONSTRAINT [PK_Client] PRIMARY KEY CLUSTERED 
-(
-	[IdClient] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[Role]    Script Date: 19.03.2026 13:23:09 ******/
+/****** Object:  Table [dbo].[Role]    Script Date: 27.03.2026 2:38:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -34,7 +15,7 @@ CREATE TABLE [dbo].[Role](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Salons]    Script Date: 19.03.2026 13:23:09 ******/
+/****** Object:  Table [dbo].[Salons]    Script Date: 27.03.2026 2:38:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -50,7 +31,7 @@ CREATE TABLE [dbo].[Salons](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Schedule]    Script Date: 19.03.2026 13:23:09 ******/
+/****** Object:  Table [dbo].[Schedule]    Script Date: 27.03.2026 2:38:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -66,7 +47,7 @@ CREATE TABLE [dbo].[Schedule](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Services]    Script Date: 19.03.2026 13:23:09 ******/
+/****** Object:  Table [dbo].[Services]    Script Date: 27.03.2026 2:38:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -83,7 +64,7 @@ CREATE TABLE [dbo].[Services](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ServicesName]    Script Date: 19.03.2026 13:23:09 ******/
+/****** Object:  Table [dbo].[ServicesName]    Script Date: 27.03.2026 2:38:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -97,7 +78,7 @@ CREATE TABLE [dbo].[ServicesName](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[User]    Script Date: 19.03.2026 13:23:09 ******/
+/****** Object:  Table [dbo].[User]    Script Date: 27.03.2026 2:38:44 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -119,6 +100,46 @@ CREATE TABLE [dbo].[User](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+SET IDENTITY_INSERT [dbo].[Role] ON 
+
+INSERT [dbo].[Role] ([IdRole], [NameRole]) VALUES (1, N'Admin')
+INSERT [dbo].[Role] ([IdRole], [NameRole]) VALUES (2, N'Manager')
+INSERT [dbo].[Role] ([IdRole], [NameRole]) VALUES (3, N'Employee')
+INSERT [dbo].[Role] ([IdRole], [NameRole]) VALUES (4, N'Client')
+SET IDENTITY_INSERT [dbo].[Role] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Salons] ON 
+
+INSERT [dbo].[Salons] ([IdSalons], [NameSalons], [Cost], [IdServices]) VALUES (6, N'1', CAST(1.00 AS Decimal(10, 2)), 3)
+SET IDENTITY_INSERT [dbo].[Salons] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Services] ON 
+
+INSERT [dbo].[Services] ([IdServices], [NameServices], [Cost], [IdServicesType], [IdClient]) VALUES (2, N'1233', CAST(123.00 AS Decimal(10, 2)), 1, 1)
+INSERT [dbo].[Services] ([IdServices], [NameServices], [Cost], [IdServicesType], [IdClient]) VALUES (3, N'1', CAST(1.00 AS Decimal(10, 2)), 1, 1)
+INSERT [dbo].[Services] ([IdServices], [NameServices], [Cost], [IdServicesType], [IdClient]) VALUES (4, N'1', CAST(1.00 AS Decimal(10, 2)), 1, 1)
+INSERT [dbo].[Services] ([IdServices], [NameServices], [Cost], [IdServicesType], [IdClient]) VALUES (9, N'12122', CAST(12312.00 AS Decimal(10, 2)), 2, 8)
+SET IDENTITY_INSERT [dbo].[Services] OFF
+GO
+SET IDENTITY_INSERT [dbo].[ServicesName] ON 
+
+INSERT [dbo].[ServicesName] ([IdServicesType], [ServicesType]) VALUES (1, N'123')
+INSERT [dbo].[ServicesName] ([IdServicesType], [ServicesType]) VALUES (2, N'1123')
+SET IDENTITY_INSERT [dbo].[ServicesName] OFF
+GO
+SET IDENTITY_INSERT [dbo].[User] ON 
+
+INSERT [dbo].[User] ([IdUser], [Name], [Lastname], [Middlename], [Birthday], [Phone], [Email], [IdRole], [Login], [Password]) VALUES (1, N'1', N'1', N'1', CAST(N'1111-11-11' AS Date), N'1', N'1', 1, N'1', N'1')
+INSERT [dbo].[User] ([IdUser], [Name], [Lastname], [Middlename], [Birthday], [Phone], [Email], [IdRole], [Login], [Password]) VALUES (6, N'132', N'123333', N'123', CAST(N'1231-12-12' AS Date), N'31', N'1231', 2, N'123', N'123')
+INSERT [dbo].[User] ([IdUser], [Name], [Lastname], [Middlename], [Birthday], [Phone], [Email], [IdRole], [Login], [Password]) VALUES (8, N'123', N'123', N'123', CAST(N'2026-03-04' AS Date), N'123', N'123', 2, N'123123', N'123123')
+INSERT [dbo].[User] ([IdUser], [Name], [Lastname], [Middlename], [Birthday], [Phone], [Email], [IdRole], [Login], [Password]) VALUES (9, N'123', N'123', N'123', CAST(N'2026-03-11' AS Date), N'123', N'123', 2, N'1221', N'12112')
+INSERT [dbo].[User] ([IdUser], [Name], [Lastname], [Middlename], [Birthday], [Phone], [Email], [IdRole], [Login], [Password]) VALUES (14, N'5', N'5333', N'5', CAST(N'2026-03-06' AS Date), N'5', N'5', 3, N'555', N'5')
+INSERT [dbo].[User] ([IdUser], [Name], [Lastname], [Middlename], [Birthday], [Phone], [Email], [IdRole], [Login], [Password]) VALUES (15, N'1111', N'111111', N'111', CAST(N'2026-03-12' AS Date), N'111', N'111', 2, N'11111', N'1111')
+INSERT [dbo].[User] ([IdUser], [Name], [Lastname], [Middlename], [Birthday], [Phone], [Email], [IdRole], [Login], [Password]) VALUES (16, N'123123123', N'123123123', N'123123123', CAST(N'2026-03-05' AS Date), N'123123123', N'123123123', 3, N'1231213', N'12312123')
+INSERT [dbo].[User] ([IdUser], [Name], [Lastname], [Middlename], [Birthday], [Phone], [Email], [IdRole], [Login], [Password]) VALUES (17, N'123312', N'123123', N'123123', CAST(N'1233-12-12' AS Date), N'123123', N'123123', 4, N'123131212', N'1231312')
+INSERT [dbo].[User] ([IdUser], [Name], [Lastname], [Middlename], [Birthday], [Phone], [Email], [IdRole], [Login], [Password]) VALUES (18, N'123123', N'123', N'123123', CAST(N'2026-03-05' AS Date), N'123123', N'123123', 4, N'1231', N'1231')
+SET IDENTITY_INSERT [dbo].[User] OFF
+GO
 ALTER TABLE [dbo].[Salons]  WITH CHECK ADD  CONSTRAINT [FK_Salons_Services] FOREIGN KEY([IdServices])
 REFERENCES [dbo].[Services] ([IdServices])
 GO
@@ -129,15 +150,15 @@ REFERENCES [dbo].[User] ([IdUser])
 GO
 ALTER TABLE [dbo].[Schedule] CHECK CONSTRAINT [FK_Schedule_User]
 GO
-ALTER TABLE [dbo].[Services]  WITH CHECK ADD  CONSTRAINT [FK_Services_Client] FOREIGN KEY([IdClient])
-REFERENCES [dbo].[Client] ([IdClient])
-GO
-ALTER TABLE [dbo].[Services] CHECK CONSTRAINT [FK_Services_Client]
-GO
 ALTER TABLE [dbo].[Services]  WITH CHECK ADD  CONSTRAINT [FK_Services_ServicesName] FOREIGN KEY([IdServicesType])
 REFERENCES [dbo].[ServicesName] ([IdServicesType])
 GO
 ALTER TABLE [dbo].[Services] CHECK CONSTRAINT [FK_Services_ServicesName]
+GO
+ALTER TABLE [dbo].[Services]  WITH CHECK ADD  CONSTRAINT [FK_Services_User] FOREIGN KEY([IdClient])
+REFERENCES [dbo].[User] ([IdUser])
+GO
+ALTER TABLE [dbo].[Services] CHECK CONSTRAINT [FK_Services_User]
 GO
 ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Role] FOREIGN KEY([IdRole])
 REFERENCES [dbo].[Role] ([IdRole])
