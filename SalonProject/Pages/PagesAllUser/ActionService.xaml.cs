@@ -46,22 +46,22 @@ namespace SalonProject.Pages.PagesAllUser
         {
             if (ServiceTB.Text == null || ServiceTB.Text == string.Empty)
             {
-                MessageBox.Show("Введите Имя");
+                MessageBox.Show("Введите Имя услуги");
                 return false;
             }
-            if (LastNameTB.Text == null || LastNameTB.Text == string.Empty)
+            if (CostTB.Text == null || CostTB.Text == string.Empty)
             {
-                MessageBox.Show("Введите Фамилию");
+                MessageBox.Show("Введите стоимость");
                 return false;
             }
-            if (BirthDayDP.Text == null || BirthDayDP.Text == string.Empty)
+            if (ClientTB.Items == null)
             {
-                MessageBox.Show("Введите День рождение");
+                MessageBox.Show("Введите клиент");
                 return false;
             }
-            if (NumberTB.Text == null || NumberTB.Text == string.Empty)
+            if (ServiceType.Items == null)
             {
-                MessageBox.Show("Введите Номер телефона");
+                MessageBox.Show("Введите тип");
                 return false;
             }
             return true;
