@@ -19,7 +19,7 @@
                 <RowDefinition Height="61*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Сотрудники" Name="InformationTB" Grid.Row="1" FontSize="40"/>
+            <TextBlock Text="Услуги" Name="InformationTB" Grid.Row="1" FontSize="40"/>
             <Border Grid.Row="2" HorizontalAlignment="Left"
             BorderBrush="Black" BorderThickness="1" Margin="1068,0,0,0" Width="452">
                 <StackPanel Orientation="Horizontal">

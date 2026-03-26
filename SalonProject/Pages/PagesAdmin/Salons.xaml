@@ -9,6 +9,45 @@
       Title="Salons">
 
     <Grid>
-        
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="17*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="38*"/>
+                <RowDefinition Height="333*"/>
+                <RowDefinition Height="61*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Салоны" Name="InformationTB" Grid.Row="1" FontSize="40"/>
+            <Border Grid.Row="2" HorizontalAlignment="Left"
+                    BorderBrush="Black" BorderThickness="1" Margin="1068,0,0,0" Width="452">
+                <StackPanel Orientation="Horizontal">
+                    <Button Width="100"
+                            BorderThickness="0"
+                            Background="{x:Null}"
+                            Name="SearchInfoBT" Click="SearchInfoBT_Click">
+                        <Image Source="/Images/iconssearch.png"/>
+                    </Button>
+                    <TextBox Width="350"
+                             FontSize="40"
+                             BorderThickness="0"
+                             Background="{x:Null}"
+                             Name="SearchInfoTB"/>
+                </StackPanel>
+            </Border>
+
+            <DataGrid Grid.Row="3"
+                      IsReadOnly="True"
+                      AutoGenerateColumns="False"
+                      Name="DGInfo">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding IdSalons}"/>
+                    <DataGridTextColumn Header="Название" Binding="{Binding NameSalons}"/>
+                    <DataGridTextColumn Header="Стоимость" Binding="{Binding Cost}"/>
+                    <DataGridTextColumn Header="Id услуг" Binding="{Binding IdServices}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Page>
