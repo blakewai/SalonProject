@@ -68,6 +68,19 @@ namespace SalonProject.Pages.PagesAllUser
             if (CostTB.Text == null || CostTB.Text == string.Empty)
             {
                 MessageBox.Show("Введите стоимость");
+<<<<<<< HEAD
+=======
+                return false;
+            }
+            if (ClientTB.Items == null)
+            {
+                MessageBox.Show("Введите клиент");
+                return false;
+            }
+            if (ServiceType.Items == null)
+            {
+                MessageBox.Show("Введите тип");
+>>>>>>> 9dfb781 (ActionService add)
                 return false;
             }
 <<<<<<< HEAD
