@@ -121,6 +121,9 @@ namespace SalonProject.Pages.MainPages
         private void BtnTime_Click(object sender, RoutedEventArgs e)
         {
 
+            InformationTextPanel("Расписание");
+
+            FrameUser.Navigate(new Uri("Pages/PagesAllUser/TimeTable.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void BtnExitAd_Click(object sender, RoutedEventArgs e)
